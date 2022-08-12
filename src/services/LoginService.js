@@ -1,8 +1,10 @@
+import {SERVICE} from "../shared/constants";
+
 export const loginService = ({doPost, doGet}) => {
     const doAuthenticate = async (userCred) => {
         try {
             return await doPost({
-                url: '/login', data: {
+                url: SERVICE.LOGIN, data: {
                     userName: userCred.userName,
                     password: userCred.password
                 }
@@ -14,7 +16,7 @@ export const loginService = ({doPost, doGet}) => {
     const doGetUser = async () => {
         try {
             return await doGet({
-                url: '/user-info'
+                url: SERVICE.USER_INFO
             })
         } catch (e) {
             throw new Error(e);
