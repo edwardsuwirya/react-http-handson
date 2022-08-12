@@ -1,10 +1,9 @@
-import {fireEvent, render, screen, waitFor} from "@testing-library/react";
-import {AuthContext, AuthProvider} from "../../../shared/context/AuthContext";
-import {Provider} from "react-redux";
-import {setupStore} from "../../../shared/state/store";
+import {fireEvent, screen, waitFor} from "@testing-library/react";
+import {AuthContext} from "../../../shared/context/AuthContext";
 import {useContext, useState} from "react";
 import {useDependency} from "../../../shared/hook/UseDependency";
 import {useLocalStorage} from "../../../shared/hook/UseLocalStorage";
+import {reduxRender} from "../../../testHelpers/customRenders";
 
 const TestComponent = () => {
     const {onLogin} = useContext(AuthContext);
@@ -51,13 +50,7 @@ describe('Auth Context', () => {
                 doGetUser: mockDoGetUser
             }
         });
-        render(
-            <Provider store={setupStore()}>
-                <AuthProvider>
-                    <TestComponent/>
-                </AuthProvider>
-            </Provider>
-        );
+        reduxRender(<TestComponent/>)
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
                 const result = screen.getByText('success');
@@ -74,13 +67,7 @@ describe('Auth Context', () => {
                 doGetUser: jest.fn()
             }
         });
-        render(
-            <Provider store={setupStore()}>
-                <AuthProvider>
-                    <TestComponent/>
-                </AuthProvider>
-            </Provider>
-        );
+        reduxRender(<TestComponent/>)
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
                 const result = screen.getByText('error');
@@ -97,17 +84,11 @@ describe('Auth Context', () => {
                 doGetUser: jest.fn()
             }
         });
-        render(
-            <Provider store={setupStore()}>
-                <AuthProvider>
-                    <TestComponent/>
-                </AuthProvider>
-            </Provider>
-        );
+        reduxRender(<TestComponent/>)
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
-            const result = screen.getByText('error');
-            expect(result).toBeInTheDocument();
+                const result = screen.getByText('error');
+                expect(result).toBeInTheDocument();
             }
         )
     });
