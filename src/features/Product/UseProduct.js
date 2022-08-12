@@ -2,7 +2,7 @@ import useViewState from "../../shared/hook/UseViewState";
 import {useEffect} from "react";
 import {useDependency} from "../../shared/hook/UseDependency";
 
-export const useProduct = () => {
+const useProduct = () => {
     const {viewState, setLoading, setData, setError} = useViewState();
     const {productService} = useDependency();
 
@@ -23,3 +23,4 @@ export const useProduct = () => {
         viewState
     }
 }
+export default useProduct

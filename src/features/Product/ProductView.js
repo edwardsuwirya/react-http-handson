@@ -1,5 +1,5 @@
 import React from 'react';
-import {useProduct} from "./UseProduct";
+import useProduct from "./UseProduct";
 
 const ProductView = () => {
     const {viewState} = useProduct();
@@ -12,7 +12,7 @@ const ProductView = () => {
                         <div>{product.productName}</div>
                         <div>{product.productInfo}</div>
                     </li>
-                }) : <div></div>}
+                }) : <div>No Product</div>}
             </ul>
         </div>
     );

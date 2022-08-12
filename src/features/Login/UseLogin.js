@@ -22,7 +22,7 @@ const useLogin = () => {
             if (userCred.userName === '' && userCred.password === '') {
                 throw new RequiredFieldError('Please input your user name and password');
             } else {
-                const response = await onLogin(userCred)
+                const response = await onLogin(userCred);
                 if (response) {
                     navigate(APP_NAVIGATION.MAIN, {replace: true});
                 } else {

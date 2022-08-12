@@ -4,7 +4,7 @@ export const apiClientFactory = (client) => {
             const response = await client.post(url, data);
             return response.data;
         } catch (e) {
-            throw e;
+            throw new Error(e);
         }
     }
 
@@ -13,7 +13,7 @@ export const apiClientFactory = (client) => {
             const response = await client.get(url);
             return response.data;
         } catch (e) {
-            throw e;
+            throw new Error(e);
         }
     }
 
