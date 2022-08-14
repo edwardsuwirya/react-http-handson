@@ -1,4 +1,5 @@
 import {loginService} from "../../services/LoginService";
+import {SERVICE} from "../../shared/constants";
 
 describe('Login Service', () => {
     test('Success authenticate', async () => {
@@ -12,7 +13,7 @@ describe('Login Service', () => {
             userName: 'dummyUser', password: 'dummyPassword'
         });
         expect(mockDoPost).toHaveBeenCalledWith({
-            url: '/login', data: {
+            url: SERVICE.LOGIN, data: {
                 userName: 'dummyUser', password: 'dummyPassword'
             }
         })
@@ -20,7 +21,7 @@ describe('Login Service', () => {
     });
     test('Failed Authenticate', async () => {
         const mockDoPost = jest.fn();
-        mockDoPost.mockRejectedValue('error');
+        mockDoPost.mockRejectedValue(new Error('error'));
         const client = jest.fn().mockReturnValue({
             doPost: mockDoPost
         })
@@ -39,7 +40,7 @@ describe('Login Service', () => {
     });
     test('Failed Get User', async () => {
         const mockDoGet = jest.fn();
-        mockDoGet.mockRejectedValue('error');
+        mockDoGet.mockRejectedValue(new Error('error'));
         const client = jest.fn().mockReturnValue({
             doGet: mockDoGet
         })

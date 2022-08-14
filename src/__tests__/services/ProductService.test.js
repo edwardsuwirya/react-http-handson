@@ -13,7 +13,7 @@ describe('Product Service', () => {
     });
     test('Failed Get All Product', async () => {
         const mockDoGet = jest.fn();
-        mockDoGet.mockRejectedValue('error');
+        mockDoGet.mockRejectedValue(new Error('error'));
         const client = jest.fn().mockReturnValue({
             doGet: mockDoGet
         })
