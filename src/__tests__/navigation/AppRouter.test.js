@@ -39,8 +39,8 @@ describe('App Router', () => {
                 </MemoryRouter>
             </Provider>
         )
-        const userNameElem = screen.getByText('Product')
-        expect(userNameElem).toBeInTheDocument();
+        const productLabelElem = screen.getByText('Product')
+        expect(productLabelElem).toBeInTheDocument();
     });
     test('should show not found view page when path is unknown', () => {
         render(
@@ -50,7 +50,20 @@ describe('App Router', () => {
                 </MemoryRouter>
             </Provider>
         )
-        const userNameElem = screen.getByText(/Oopss/)
+        const errorLabelElem = screen.getByText(/Oopss/)
+        expect(errorLabelElem).toBeInTheDocument();
+    });
+    test('should redirect to login', () => {
+        render(
+            <Provider store={setupStore({
+                userInfoReducer: {name: ''}
+            })}>
+                <MemoryRouter initialEntries={['/main']}>
+                    <AppRouter/>
+                </MemoryRouter>
+            </Provider>
+        )
+        const userNameElem = screen.getByText(/User Name/)
         expect(userNameElem).toBeInTheDocument();
     });
 });

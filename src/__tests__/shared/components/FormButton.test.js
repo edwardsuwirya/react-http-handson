@@ -6,14 +6,14 @@ describe('Form Button', () => {
         render(
             <FormButton label='dummy label'/>
         );
-        const result = screen.getByText('dummy label');
-        expect(result).toBeInTheDocument();
+        const labelElem = screen.getByText('dummy label');
+        expect(labelElem).toBeInTheDocument();
     })
     test('Button disabled', () => {
         render(
             <FormButton label='dummy label' disabled/>
         );
-        const result = screen.getByText('dummy label');
-        expect(result).toBeDisabled();
+        const labelElem = screen.getByText('dummy label');
+        expect(labelElem).toBeDisabled();
     })
 })

@@ -18,7 +18,7 @@ describe('Login View', () => {
         mockOnLogin.mockReturnValue({
             onLogin: jest.fn()
         })
-        render(<MemoryRouter><LoginView/></MemoryRouter>)
+        render(<LoginView/>)
         const loginButtonElem = screen.getByText('Login');
         fireEvent.click(loginButtonElem);
         await waitFor(() => {
@@ -30,7 +30,7 @@ describe('Login View', () => {
         mockOnLogin.mockReturnValue({
             onLogin: jest.fn().mockResolvedValue(false)
         })
-        render(<MemoryRouter><LoginView/></MemoryRouter>)
+        render(<LoginView/>)
         const userNameElem = screen.getByLabelText(/User Name/);
         const passwordElem = screen.getByLabelText(/Password/);
         fireEvent.change(userNameElem, {target: {value: 'm'}});
@@ -62,7 +62,7 @@ describe('Login View', () => {
         mockOnLogin.mockReturnValue({
             onLogin: jest.fn().mockResolvedValue(true)
         })
-        render(<MemoryRouter><LoginView/></MemoryRouter>)
+        render(<LoginView/>)
         const userNameElem = screen.getByLabelText(/User Name/);
         const passwordElem = screen.getByLabelText(/Password/);
         fireEvent.change(userNameElem, {target: {value: 'm'}});

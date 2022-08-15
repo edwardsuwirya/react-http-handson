@@ -12,12 +12,12 @@ describe('Form Button', () => {
         expect(valueResult).toBeInTheDocument()
     });
     test('OnChange show correct value', () => {
-        const onValueChange = jest.fn()
+        const mockValueChange = jest.fn()
         render(
-            <FormInput id='dummyid' label='dummy label' value='dummy text' onValueChange={onValueChange}/>
+            <FormInput id='dummyid' label='dummy label' value='dummy text' onValueChange={mockValueChange}/>
         );
         const input = screen.getByRole('textbox');
         fireEvent.change(input, {target: {value: '23'}});
-        expect(onValueChange).toBeCalledWith('dummyid', '23')
+        expect(mockValueChange).toBeCalledWith('dummyid', '23')
     })
 })

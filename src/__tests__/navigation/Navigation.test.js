@@ -26,7 +26,7 @@ describe('Navigation', () => {
             <Provider store={setupStore({
                 userInfoReducer: {name: 'dummy'}
             })}>
-                <MemoryRouter initialEntries={['/main/product']}>
+                <MemoryRouter initialEntries={['/main']}>
                     <AppRouter/>
                 </MemoryRouter>
             </Provider>

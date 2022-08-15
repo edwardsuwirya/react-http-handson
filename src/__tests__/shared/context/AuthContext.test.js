@@ -60,8 +60,8 @@ describe('Auth Context', () => {
         );
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
-                const result = screen.getByText('success');
-                expect(result).toBeInTheDocument();
+                const successLabelElem = screen.getByText('success');
+                expect(successLabelElem).toBeInTheDocument();
             }
         )
     });
@@ -83,8 +83,8 @@ describe('Auth Context', () => {
         );
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
-                const result = screen.getByText('error');
-                expect(result).toBeInTheDocument();
+                const errorLabel = screen.getByText('error');
+                expect(errorLabel).toBeInTheDocument();
             }
         )
     });
@@ -106,8 +106,8 @@ describe('Auth Context', () => {
         );
         fireEvent.click(screen.getByTestId("test-button"));
         await waitFor(() => {
-            const result = screen.getByText('error');
-            expect(result).toBeInTheDocument();
+                const errorLabel = screen.getByText('error');
+                expect(errorLabel).toBeInTheDocument();
             }
         )
     });

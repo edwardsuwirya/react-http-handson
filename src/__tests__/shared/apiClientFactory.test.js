@@ -17,7 +17,7 @@ describe('Api Client Factory', () => {
         expect(response).toBeTruthy()
     });
     test('Failed doPost', async () => {
-        mockPost.mockRejectedValue('error');
+        mockPost.mockRejectedValue(new Error('error'));
         await expect(client.doPost({})).rejects.toThrow('error')
     });
     test('Success doGet', async () => {
@@ -26,7 +26,7 @@ describe('Api Client Factory', () => {
         expect(response).toBeTruthy()
     });
     test('Failed doGet', async () => {
-        mockGet.mockRejectedValue('error');
+        mockGet.mockRejectedValue(new Error('error'));
         await expect(client.doGet({})).rejects.toThrow('error')
     });
 })
